@@ -1,0 +1,53 @@
+{
+    "name": "brianvarskonst/http-contracts",
+    "type": "library",
+    "description": "Provides Http Contracts for Symfony",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Brian Schäffner",
+            "email": "burnify.design@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "support": {
+        "issues": "https://github.com/brianvarskonst/http-contracts/issues"
+    },
+    "require": {
+        "php": ">=8.1"
+    },
+    "require-dev": {
+        "inpsyde/php-coding-standards": "^1.0",
+        "vimeo/psalm": "^4",
+        "lctrs/psalm-psr-container-plugin": "^1.7",
+        "marartner/psalm-strict-equality": "^1.0",
+        "php-standard-library/psalm-plugin": "^2.0",
+        "psalm/plugin-symfony": "^3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bvsk\\Contracts\\Http\\": "src/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "platform": {
+            "php": "8.1"
+        },
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "scripts": {
+        "cs": "@php ./vendor/bin/phpcs -s",
+        "cbf": "@php ./vendor/bin/phpcbf",
+        "psalm": "@php ./vendor/vimeo/psalm/psalm --no-cache --no-diff --no-progress --output-format=console",
+        "qa": [
+            "@cs",
+            "@psalm"
+        ]
+    }
+}
