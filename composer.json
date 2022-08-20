@@ -1,8 +1,8 @@
 {
     "name": "brianvarskonst/http-contracts",
-    "type": "library",
     "description": "Provides Http Contracts for Symfony",
     "license": "MIT",
+    "type": "library",
     "authors": [
         {
             "name": "Brian Schäffner",
@@ -10,8 +10,6 @@
             "role": "Developer"
         }
     ],
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "support": {
         "issues": "https://github.com/brianvarskonst/http-contracts/issues"
     },
@@ -19,35 +17,54 @@
         "php": ">=8.1"
     },
     "require-dev": {
+        "ergebnis/composer-normalize": "^2.28",
+        "infection/infection": "^0.26.13",
         "inpsyde/php-coding-standards": "^1.0",
-        "vimeo/psalm": "^4",
         "lctrs/psalm-psr-container-plugin": "^1.7",
         "marartner/psalm-strict-equality": "^1.0",
         "php-standard-library/psalm-plugin": "^2.0",
-        "psalm/plugin-symfony": "^3.1"
+        "phpunit/phpunit": "^9.5",
+        "psalm/plugin-mockery": "^0.9.1",
+        "symfony/var-dumper": "^6.1",
+        "vimeo/psalm": "^4"
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Bvsk\\Contracts\\Http\\": "src/"
+            "Bvsk\\Contracts\\Http\\Request\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Bvsk\\Contracts\\Http\\Request\\Tests\\": "tests"
         }
     },
     "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "ergebnis/composer-normalize": true,
+            "infection/extension-installer": true
+        },
         "optimize-autoloader": true,
-        "sort-packages": true,
         "platform": {
             "php": "8.1"
         },
-        "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true
-        }
+        "sort-packages": true
     },
     "scripts": {
-        "cs": "@php ./vendor/bin/phpcs -s",
+        "post-update-cmd": [
+            "@composer normalize"
+        ],
         "cbf": "@php ./vendor/bin/phpcbf",
+        "cs": "@php ./vendor/bin/phpcs -s",
         "psalm": "@php ./vendor/vimeo/psalm/psalm --no-cache --no-diff --no-progress --output-format=console",
         "qa": [
             "@cs",
-            "@psalm"
-        ]
+            "@psalm",
+            "@tests"
+        ],
+        "tests": "@php ./vendor/bin/phpunit",
+        "tests:no-cov": "@php ./vendor/bin/phpunit --no-coverage"
     }
 }

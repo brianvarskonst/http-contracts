@@ -40,3 +40,6 @@ jobs:
 
             -   name: Run Psalm
                 run: composer psalm
+
+            -   name: Run PHPUnit Tests
+                run: composer tests

@@ -1,6 +1,6 @@
 # Bvsk Http Contracts
 
-Provides common used Http Contracts for Symfony 6.
+Provides common used Http Contracts for PHP 8.1.
 
 ## Table of Contents
 
