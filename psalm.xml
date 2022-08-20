@@ -20,7 +20,7 @@
     <issueHandlers>
         <PropertyNotSetInConstructor>
             <errorLevel type="suppress">
-                <directory name="tests/Unit"/>
+                <directory name="tests"/>
             </errorLevel>
         </PropertyNotSetInConstructor>
     </issueHandlers>
